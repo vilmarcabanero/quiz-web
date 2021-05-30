@@ -20,6 +20,7 @@ import {
 	categoryOneSubjectList,
 } from '../helpers';
 import QuizAnswers from './QuizAnswers';
+import CE from './CE';
 
 const useStyles = makeStyles(() => {
 	return styles;
@@ -30,6 +31,7 @@ const QuizCategories = () => {
 	const [chapter, setChapter] = useState({ id: '', name: '' });
 	const [categorySubjects, setcategorySubjects] = useState('');
 	const [hasChosenSubject, setHasChosenSubject] = useState(false);
+	const [hasChosenCategory, setHasChosenCategory] = useState(true);
 	const [quizNumber, setQuizNumber] = useState(null);
 	const [difficulty, setDifficulty] = useState({
 		id: '',
@@ -128,7 +130,9 @@ const QuizCategories = () => {
 		setQuizNumber('');
 		setDifficulty('');
 		setCurrentQuizStep('start');
+		setHasChosenCategory(false);
 		window.scrollTo(0, '20px');
+		console.log(hasChosenCategory);
 	};
 
 	// if (!chapterData.length) {
@@ -194,6 +198,10 @@ const QuizCategories = () => {
 		);
 	}
 
+	if (!hasChosenCategory) {
+		return <CE />;
+	}
+
 	return (
 		<Container>
 			<div className={classes.paper}>
@@ -252,14 +260,14 @@ const QuizCategories = () => {
 								</Grid>
 								<Grid item xs={12}>
 									<TextField
-										inputProps={{ min: 1, max: 10 }}
+										inputProps={{ min: 1, max: 20 }}
 										required
 										fullWidth
 										type='number'
 										id='quiz-number'
 										variant='outlined'
 										name='quiz-number'
-										label={`Add a quiz number from 1 to 10`}
+										label={`Add a quiz number from 1 to 20`}
 										value={quizNumber || ''}
 										onChange={handleChange}
 									/>

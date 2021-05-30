@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import CategoryOne from './CategoryOne';
 import CategoryTwo from './CategoryTwo';
 import CategoryThree from './CategoryThree';
@@ -11,6 +10,7 @@ import {
 	Typography,
 	InputLabel,
 	FormControl,
+	Container,
 } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,12 +20,13 @@ const useStyles = makeStyles(() => {
 	return styles;
 });
 
-const CE = () => {
+const CE = ({ hasChosenCategoryFromQuiz }) => {
 	const [category, setCategory] = useState('');
-	const [hasChosenCategory, sethasChosenCategory] = useState(false);
-
+	const [hasChosenCategory, setHasChosenCategory] = useState(
+		hasChosenCategoryFromQuiz
+	);
 	const chooseCategoryHandler = () => {
-		sethasChosenCategory(true);
+		setHasChosenCategory(true);
 	};
 
 	const selectCategoryHandler = e => {
@@ -92,11 +93,5 @@ const CE = () => {
 		</Container>
 	);
 };
-
-const Container = styled.div`
-	flex: 1;
-	justify-content: center;
-	align-items: center;
-`;
 
 export default CE;

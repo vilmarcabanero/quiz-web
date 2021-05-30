@@ -44,7 +44,7 @@ export const styles = {
 		display: 'flex',
 		margin: '0 auto',
 		// maxWidth: '150px',
-		textAlign: 'center',
+		textAlign: 'flexStart',
 		flexDirection: 'column',
 	},
 };
