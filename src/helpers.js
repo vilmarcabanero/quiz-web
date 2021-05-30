@@ -55,9 +55,28 @@ export const difficulties = [
 	{ id: 'total_hard_question_count', name: 'Hard', number: '3' },
 ];
 
-export const subjects = [
+export const categoryOneSubjectList = [
 	{ id: 11, name: 'Algebra' },
 	{ id: 15, name: 'Engineering Economy' },
+];
+
+export const categoryTwoSubjectList = [
+	{ id: 21, name: 'Algebra' },
+	{ id: 25, name: 'Engineering Economy' },
+];
+
+export const categoryThreeSubjectList = [
+	{ id: 31, name: 'Algebra' },
+	{ id: 35, name: 'Engineering Economy' },
+];
+
+export const ce = [
+	{
+		id: 1,
+		name: 'MSTE - Mathematics, Surveying and Transportation Engineering',
+	},
+	{ id: 2, name: 'HGE - Hydraulics and Geotechnical Engineering' },
+	{ id: 3, name: 'SEC - Structural Engineering and Construction' },
 ];
 
 export const createMarkup = text => {

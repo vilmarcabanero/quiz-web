@@ -17,7 +17,7 @@ import {
 	styles,
 	difficulties,
 	createMarkup,
-	categoryOneSubjectList,
+	categoryThreeSubjectList,
 } from '../helpers';
 import QuizAnswers from './QuizAnswers';
 
@@ -169,7 +169,7 @@ const QuizCategories = () => {
 											labelId='categoery-select-label'
 											onChange={selectSubjectHandler}
 										>
-											{categoryOneSubjectList.map(subject => (
+											{categoryThreeSubjectList.map(subject => (
 												<MenuItem key={subject.id} value={subject.id}>
 													<span
 														dangerouslySetInnerHTML={createMarkup(subject.name)}

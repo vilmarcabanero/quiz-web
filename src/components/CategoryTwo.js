@@ -17,7 +17,7 @@ import {
 	styles,
 	difficulties,
 	createMarkup,
-	categoryOneSubjectList,
+	categoryTwoSubjectList,
 } from '../helpers';
 import QuizAnswers from './QuizAnswers';
 
@@ -159,17 +159,17 @@ const QuizCategories = () => {
 							<Grid container spacing={4}>
 								<Grid item xs={12}>
 									<FormControl fullWidth variant='outlined'>
-										<InputLabel id='category-select-label'>MSTE</InputLabel>
+										<InputLabel id='category-select-label'>HGE</InputLabel>
 										<Select
 											required
 											name='category'
 											value={categorySubjects || ''}
 											id='subject-select'
-											label='MSTE'
+											label='HGE'
 											labelId='categoery-select-label'
 											onChange={selectSubjectHandler}
 										>
-											{categoryOneSubjectList.map(subject => (
+											{categoryTwoSubjectList.map(subject => (
 												<MenuItem key={subject.id} value={subject.id}>
 													<span
 														dangerouslySetInnerHTML={createMarkup(subject.name)}
