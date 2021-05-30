@@ -76,7 +76,7 @@ const CE = ({ hasChosenCategoryFromQuiz }) => {
 								type='submit'
 								variant='contained'
 							>
-								Submit
+								Select Category
 							</Button>
 						</form>
 					</div>

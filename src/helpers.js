@@ -61,13 +61,13 @@ export const categoryOneSubjectList = [
 ];
 
 export const categoryTwoSubjectList = [
-	{ id: 21, name: 'Algebra' },
-	{ id: 25, name: 'Engineering Economy' },
+	{ id: 21, name: 'Fluid Mechanics' },
+	{ id: 25, name: 'Soil Mechanics and Foundation' },
 ];
 
 export const categoryThreeSubjectList = [
-	{ id: 31, name: 'Algebra' },
-	{ id: 35, name: 'Engineering Economy' },
+	{ id: 31, name: 'Engineering Mechanics' },
+	{ id: 35, name: 'Design of Steel Structures' },
 ];
 
 export const ce = [

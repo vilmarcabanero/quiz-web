@@ -20,6 +20,9 @@ import {
 	categoryThreeSubjectList,
 } from '../helpers';
 import QuizAnswers from './QuizAnswers';
+import CE from './CE';
+
+//Note. Need baguhin para sa ibang category like CategoryOne, CategoryThree ay categoryOneSubjectList, MSTE to SEC
 
 const useStyles = makeStyles(() => {
 	return styles;
@@ -30,6 +33,7 @@ const QuizCategories = () => {
 	const [chapter, setChapter] = useState({ id: '', name: '' });
 	const [categorySubjects, setcategorySubjects] = useState('');
 	const [hasChosenSubject, setHasChosenSubject] = useState(false);
+	const [hasChosenCategory, setHasChosenCategory] = useState(true);
 	const [quizNumber, setQuizNumber] = useState(null);
 	const [difficulty, setDifficulty] = useState({
 		id: '',
@@ -128,7 +132,9 @@ const QuizCategories = () => {
 		setQuizNumber('');
 		setDifficulty('');
 		setCurrentQuizStep('start');
+		// setHasChosenCategory(false);
 		window.scrollTo(0, '20px');
+		console.log(hasChosenCategory);
 	};
 
 	// if (!chapterData.length) {
@@ -159,13 +165,13 @@ const QuizCategories = () => {
 							<Grid container spacing={4}>
 								<Grid item xs={12}>
 									<FormControl fullWidth variant='outlined'>
-										<InputLabel id='category-select-label'>MSTE</InputLabel>
+										<InputLabel id='category-select-label'>SEC</InputLabel>
 										<Select
 											required
 											name='category'
 											value={categorySubjects || ''}
 											id='subject-select'
-											label='MSTE'
+											label='SEC'
 											labelId='categoery-select-label'
 											onChange={selectSubjectHandler}
 										>
@@ -185,13 +191,17 @@ const QuizCategories = () => {
 								type='submit'
 								variant='contained'
 							>
-								Submit
+								Select subject
 							</Button>
 						</form>
 					</div>
 				</Container>
 			</div>
 		);
+	}
+
+	if (!hasChosenCategory) {
+		return <CE />;
 	}
 
 	return (
@@ -252,14 +262,14 @@ const QuizCategories = () => {
 								</Grid>
 								<Grid item xs={12}>
 									<TextField
-										inputProps={{ min: 1, max: 10 }}
+										inputProps={{ min: 1, max: 20 }}
 										required
 										fullWidth
 										type='number'
 										id='quiz-number'
 										variant='outlined'
 										name='quiz-number'
-										label={`Add a quiz number from 1 to 10`}
+										label={`Add a quiz number from 1 to 20`}
 										value={quizNumber || ''}
 										onChange={handleChange}
 									/>
@@ -271,6 +281,13 @@ const QuizCategories = () => {
 								variant='contained'
 							>
 								Start test
+							</Button>
+							<Button
+								className={classes.submitButton}
+								variant='contained'
+								onClick={() => setHasChosenCategory(false)}
+							>
+								Select category
 							</Button>
 						</form>
 					</>

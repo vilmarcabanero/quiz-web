@@ -130,7 +130,7 @@ const QuizCategories = () => {
 		setQuizNumber('');
 		setDifficulty('');
 		setCurrentQuizStep('start');
-		setHasChosenCategory(false);
+		// setHasChosenCategory(false);
 		window.scrollTo(0, '20px');
 		console.log(hasChosenCategory);
 	};
@@ -189,7 +189,7 @@ const QuizCategories = () => {
 								type='submit'
 								variant='contained'
 							>
-								Submit
+								Select subject
 							</Button>
 						</form>
 					</div>
@@ -279,6 +279,13 @@ const QuizCategories = () => {
 								variant='contained'
 							>
 								Start test
+							</Button>
+							<Button
+								className={classes.submitButton}
+								variant='contained'
+								onClick={() => setHasChosenCategory(false)}
+							>
+								Select category
 							</Button>
 						</form>
 					</>
