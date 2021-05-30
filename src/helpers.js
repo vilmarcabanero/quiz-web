@@ -55,6 +55,11 @@ export const difficulties = [
 	{ id: 'total_hard_question_count', name: 'Hard', number: '3' },
 ];
 
+export const subjects = [
+	{ id: 11, name: 'Algebra' },
+	{ id: 15, name: 'Engineering Economy' },
+];
+
 export const createMarkup = text => {
 	return { __html: text };
 };

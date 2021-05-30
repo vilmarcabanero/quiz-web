@@ -13,7 +13,7 @@ import {
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { styles, difficulties, createMarkup } from '../helpers';
+import { styles, difficulties, createMarkup, subjects } from '../helpers';
 import QuizAnswers from './QuizAnswers';
 
 const useStyles = makeStyles(theme => {
@@ -23,12 +23,7 @@ const useStyles = makeStyles(theme => {
 const QuizCategories = () => {
 	const [chapterData, setChapterData] = useState([]);
 	const [chapter, setChapter] = useState({ id: '', name: '' });
-	const [category1Data, setCategory1Data] = useState([]);
-	const [category, setCategory] = useState(1);
-	const [category1Subjects, setCategory1Subjects] = useState(11);
-	const [categoryUrl, setCategoryUrl] = useState(
-		'https://entropiya-api.herokuapp.com/api/quiz/chapters?subject=11'
-	);
+	const [category1Subjects, setCategory1Subjects] = useState('');
 	const [hasChosenSubject, setHasChosenSubject] = useState(false);
 	const [quizNumber, setQuizNumber] = useState(null);
 	const [difficulty, setDifficulty] = useState({
@@ -72,21 +67,6 @@ const QuizCategories = () => {
 		}
 	};
 
-	// This is pag pipili palang ng subject.
-	useEffect(() => {
-		const fetchCategory1 = async () => {
-			setIsLoading(true);
-			const result = await axios(
-				`https://entropiya-api.herokuapp.com/api/quiz/subjects?category=${category}`
-			);
-			setIsLoading(false);
-			setCategory1Data(result.data);
-			console.log(result.data[0].subjectDescription);
-			console.log(category1Data);
-		};
-
-		fetchCategory1();
-	}, [category]);
 
 	useEffect(() => {
 		const fetchChapters = async () => {
@@ -102,24 +82,13 @@ const QuizCategories = () => {
 		window.scrollTo(0, '20px');
 	}, [category1Subjects]);
 
-	//this is pag pipili palang ng subject.
 	const chooseSubjectHandler = () => {
-		// setCategoryUrl(
-		// 	`https://entropiya-api.herokuapp.com/api/quiz/chapters?subject=${category1Subjects}`
-		// );
-		// fetchChapters();
-		setCategoryUrl(
-			`https://entropiya-api.herokuapp.com/api/quiz/chapters?subject=${category1Subjects}`
-		);
 		setHasChosenSubject(true);
-		console.log(category1Subjects);
-		// console.log(category);
 	};
 
 	const selectSubjectHandler = e => {
 		let chosenSubject = e.target.value;
 		setCategory1Subjects(chosenSubject);
-		console.log(`Chosen subject: ${chosenSubject}`);
 	};
 
 	const handleSubmit = e => {
@@ -167,7 +136,7 @@ const QuizCategories = () => {
 			<Container>
 				<div className={classes.paper}>
 					<Typography variant='h1' className={classes.mainTitle}>
-						Please wait...
+						Loading questions...
 					</Typography>
 				</div>
 			</Container>
@@ -186,9 +155,7 @@ const QuizCategories = () => {
 							<Grid container spacing={4}>
 								<Grid item xs={12}>
 									<FormControl fullWidth variant='outlined'>
-										<InputLabel id='category-select-label'>
-											MSTE
-										</InputLabel>
+										<InputLabel id='category-select-label'>MSTE</InputLabel>
 										<Select
 											required
 											name='category'
@@ -198,18 +165,13 @@ const QuizCategories = () => {
 											labelId='categoery-select-label'
 											onChange={selectSubjectHandler}
 										>
-											<MenuItem value={11}>
-												<span
-													dangerouslySetInnerHTML={createMarkup('Algebra')}
-												/>
-											</MenuItem>
-											<MenuItem value={15}>
-												<span
-													dangerouslySetInnerHTML={createMarkup(
-														'Engineering Economy'
-													)}
-												/>
-											</MenuItem>
+											{subjects.map(subject => (
+												<MenuItem key={subject.id} value={subject.id}>
+													<span
+														dangerouslySetInnerHTML={createMarkup(subject.name)}
+													/>
+												</MenuItem>
+											))}
 										</Select>
 									</FormControl>
 								</Grid>
@@ -304,7 +266,7 @@ const QuizCategories = () => {
 								type='submit'
 								variant='contained'
 							>
-								Submit
+								Start test
 							</Button>
 						</form>
 					</>
