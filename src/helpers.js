@@ -5,7 +5,7 @@ export const styles = {
 		marginBottom: '20px',
 		borderRadius: '5px',
 		border: 'none',
-		color: 'black'
+		color: 'black',
 	},
 	mainTitle: {
 		fontSize: '45px',
@@ -27,6 +27,7 @@ export const styles = {
 		marginBottom: '10px',
 		fontWeight: '500',
 		lineHeight: '35px',
+		textAlign: 'justify',
 	},
 	answer: {
 		fontSize: '18px',

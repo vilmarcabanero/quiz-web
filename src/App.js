@@ -1,7 +1,7 @@
-import QuizCategories from "./components/QuizCategories";
+import CategoryOne from "./components/CategoryOne";
 
 const App = () => {
-  return <QuizCategories />;
+  return <CategoryOne />;
 };
 
 export default App;

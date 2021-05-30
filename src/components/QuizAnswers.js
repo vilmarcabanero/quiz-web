@@ -90,7 +90,7 @@ const QuizAnswers = ({
         <Grid container spacing={4}>
           <Grid item xs={12}>
             {quizData.map((quiz) => (
-              <div key={quiz.question} className={classes.paper}>
+              <div key={quiz.questionId} className={classes.paper}>
                 <Typography variant="h5" className={classes.question}>
                   <span dangerouslySetInnerHTML={createMarkup(quiz.question)} />
                 </Typography>
