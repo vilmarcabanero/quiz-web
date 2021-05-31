@@ -6,11 +6,13 @@ import {
 	Grid,
 	Select,
 	Button,
+	Paper,
 	MenuItem,
 	Typography,
 	InputLabel,
 	FormControl,
 	Container,
+	CssBaseline,
 } from '@material-ui/core';
 
 import {
@@ -19,7 +21,6 @@ import {
 	ThemeProvider,
 } from '@material-ui/core/styles';
 import { styles, createMarkup, ce } from '../helpers';
-import green from '@material-ui/core/colors/green';
 
 const useStyles = makeStyles(() => {
 	return styles;
@@ -30,9 +31,7 @@ const theme = createMuiTheme({
 		primary: {
 			main: '#4398ff',
 		},
-		secondary: {
-			main: green[500],
-		},
+		type: 'dark',
 	},
 });
 
@@ -54,10 +53,11 @@ const CE = ({ hasChosenCategoryFromQuiz }) => {
 
 	return (
 		<ThemeProvider theme={theme}>
+			<CssBaseline />
 			<Container>
 				{!hasChosenCategory ? (
 					<div>
-						<div className={classes.paper}>
+						<Paper className={classes.paper}>
 							<Typography variant='h1' className={classes.mainTitle}>
 								Select a category:
 							</Typography>
@@ -96,7 +96,7 @@ const CE = ({ hasChosenCategoryFromQuiz }) => {
 									Select Category
 								</Button>
 							</form>
-						</div>
+						</Paper>
 					</div>
 				) : category === 1 ? (
 					<CategoryOne />

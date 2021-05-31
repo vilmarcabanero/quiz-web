@@ -5,7 +5,6 @@ export const styles = {
 		marginBottom: '20px',
 		borderRadius: '5px',
 		border: 'none',
-		color: 'black',
 	},
 	mainTitle: {
 		fontSize: '45px',
